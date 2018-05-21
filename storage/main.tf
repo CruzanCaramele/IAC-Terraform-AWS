@@ -8,4 +8,12 @@ resource "random_id" "prod_bucket_id" {
 ###############################################
 # S3 bucket #
 ###############################################
+resource "aws_s3_bucket" "prod_code_bucket" {
+  acl           = "private"
+  bucket        = "${var.project_name}-S{random_id.prod_bucket_id.dec}"
+  force_destroy = true
 
+  tags {
+    Name = "prod_code_bucket"
+  }
+}
