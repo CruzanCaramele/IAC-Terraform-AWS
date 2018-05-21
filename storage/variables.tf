@@ -1,4 +1,4 @@
 variable "project_name" {
-  description = "describe your variable"
+  description = "name of project"
   default     = "project-terraform"
 }
