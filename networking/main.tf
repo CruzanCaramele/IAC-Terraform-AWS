@@ -55,11 +55,11 @@ resource "aws_default_route_table" "prod_private_rt" {
 # Subnets #
 #---------------------------------------------#
 resource "aws_subnet" "prod_public_subnet" {
-  count                  = 2
-  vpc_id                 = "${aws_vpc.prod_vpc.id}"
-  cidr_block             = "${var.public_cidrs[count.index]}"
-  map_public_ip_on_lunch = true
-  availability_zone      = "${data.aws_availability_zones.available_name[count.index]}"
+  count                   = 2
+  vpc_id                  = "${aws_vpc.prod_vpc.id}"
+  cidr_block              = "${var.public_cidrs[count.index]}"
+  map_public_ip_on_launch = true
+  availability_zone       = "${data.aws_availability_zones.available.names[count.index]}"
 
   tags {
     Name = "prod_public_${count.index + 1}"
