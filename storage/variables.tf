@@ -1,4 +1,3 @@
 variable "project_name" {
-  description = "name of project"
-  default     = "project-terraform"
+  description = "s3 bucket uses the project name"
 }
