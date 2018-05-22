@@ -22,3 +22,14 @@ module "networking" {
   public_cidrs = "${var.public_cidrs}"
   access_ip    = "${var.access_ip}"
 }
+
+#---------------------------------------------#
+# Compute Resources #
+#---------------------------------------------#
+module "compute" {
+  source          = "./compute"
+  instance_count  = "${var.instance_count}"
+  key_name        = "${var.key_name}"
+  public_key_path = "${var.public_key_path}"
+  instance_type   = "${var.instance_type}"
+}
