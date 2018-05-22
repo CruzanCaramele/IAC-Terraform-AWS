@@ -1,12 +1,10 @@
 variable "key_name" {
   description = "ssh key name"
-  default     = "prodkey"
 }
 
 variable "public_key_path" {
   type        = "string"
   description = "path to public key"
-  default     = "/Users/hamzayahaya/.ssh/id_rsa.pub"
 }
 
 variable "subnet_ips" {
@@ -22,10 +20,11 @@ variable "instance_type" {
   description = "ec2 instance type to deploy"
 }
 
-variable "security_group" {
+variable "vpc_security_group" {
   description = "vpc security group"
 }
 
 variable "subnets" {
+  type        = "list"
   description = "subnet ids provided from aws"
 }
