@@ -28,6 +28,16 @@ resource "aws_internet_gateway" "prod_internet_gateway" {
 }
 
 #---------------------------------------------#
+# Load Balancer #
+#---------------------------------------------#
+resource "aws_alb" "prod_alb" {
+  name               = "${var.aws_alb}"
+  internal           = false
+  load_balancer_type = "application"
+  security_groups    = ["${aws_security_group.prod_alb_sg_group.id}"]
+}
+
+#---------------------------------------------#
 # Route tables #
 #---------------------------------------------#
 resource "aws_route_table" "prod_public_rt" {
@@ -73,7 +83,7 @@ resource "aws_route_table_association" "prod_public_assoc" {
 }
 
 #---------------------------------------------#
-# Security group #
+# Security groups #
 #---------------------------------------------#
 resource "aws_security_group" "prod_public_sg" {
   name        = "prod_public_sg"
@@ -101,5 +111,17 @@ resource "aws_security_group" "prod_public_sg" {
     to_port     = 0
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+resource "aws_security_group" "prod_alb_sg_group" {
+  name        = "prod_alb_sg_group"
+  description = "load balancer security group"
+  vpc_id      = "${aws_vpc.prod_vpc.id}"
+
+  # HTTP
+  ingress {
+    from_port = 80
+    to_port   = 80
   }
 }
