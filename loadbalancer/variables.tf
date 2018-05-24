@@ -1,4 +1,4 @@
-variable "aws_alb" {
+variable "lb_name" {
   description = "name of application load balancer"
   default     = "prod-alb"
 }
