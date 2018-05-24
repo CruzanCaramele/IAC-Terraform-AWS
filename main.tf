@@ -29,3 +29,19 @@ module "compute" {
   vpc_security_group = "${module.networking.public_sg}"
   subnet_ips         = "${module.networking.subnet_ips}"
 }
+
+#---------------------------------------------#
+# Load Balancer #
+#---------------------------------------------#
+module "loadbalancer" {
+  source                     = "./loadbalancer"
+  lb_name                    = "${var.lb_name}"
+  load_balancer_is_internal  = "${var.load_balancer_is_internal}"
+  lb_sg                      = "${module.networking.prod_lb_sg}"
+  lb_subnets                 = "${module.networking.public_subnets}"
+  enable_deletion_protection = "${var.enable_deletion_protection}"
+  lb_access_logs_bucket      = "${module.storage.bucketname}"
+  lb_access_logs_prefix      = "${var.lb_access_logs_prefix}"
+  lb_access_logs_is_enabled  = "${var.lb_access_logs_is_enabled}"
+  lb_environment             = "${var.lb_environment}"
+}
