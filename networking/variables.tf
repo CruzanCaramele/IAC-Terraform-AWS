@@ -10,8 +10,3 @@ variable "public_cidrs" {
 variable "access_ip" {
   description = "allowed ip addresses"
 }
-
-variable "aws_alb" {
-  description = "name of application load balancer"
-  default     = "prod-alb"
-}
