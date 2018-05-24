@@ -30,3 +30,10 @@ output "Server IDs" {
 output "Server IPs" {
   value = "${module.compute.server_ips}"
 }
+
+#---------------------------------------------#
+# Load Balancer outputs #
+#---------------------------------------------#
+output "Load Balancer" {
+  value = "${module.loadbalancer.lb_name}"
+}

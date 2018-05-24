@@ -9,3 +9,7 @@ output "public_sg" {
 output "subnet_ips" {
   value = "${aws_subnet.prod_public_subnet.*.cidr_block}"
 }
+
+output "prod_lb_sg" {
+  value = "${aws_security_group.prod_lb_sg.id}"
+}

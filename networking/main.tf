@@ -104,8 +104,8 @@ resource "aws_security_group" "prod_public_sg" {
   }
 }
 
-resource "aws_security_group" "prod_alb_sg_group" {
-  name        = "prod_alb_sg_group"
+resource "aws_security_group" "prod_lb_sg" {
+  name        = "prod_lb_sg"
   description = "load balancer security group"
   vpc_id      = "${aws_vpc.prod_vpc.id}"
 

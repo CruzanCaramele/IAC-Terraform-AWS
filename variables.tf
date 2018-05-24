@@ -44,3 +44,30 @@ variable "instance_count" {
 variable "instance_type" {
   description = "ec2 instance type to deploy"
 }
+
+#---------------------------------------------#
+# Load Balancer Variables #
+#---------------------------------------------#
+variable "lb_name" {
+  description = "name of application load balancer"
+}
+
+variable "load_balancer_is_internal" {
+  description = "external or internal"
+}
+
+variable "enable_deletion_protection" {
+  description = "if enabled lb will be protected from deletion"
+}
+
+variable "lb_access_logs_prefix" {
+  description = "folder to store logs within the s3 bucket"
+}
+
+variable "lb_access_logs_is_enabled" {
+  description = "enable logging - boolean value"
+}
+
+variable "lb_environment" {
+  description = "working environment"
+}
