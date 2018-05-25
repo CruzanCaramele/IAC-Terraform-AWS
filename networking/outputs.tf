@@ -13,3 +13,7 @@ output "subnet_ips" {
 output "prod_lb_sg" {
   value = "${aws_security_group.prod_lb_sg.id}"
 }
+
+output "vpc_id" {
+  value = "${aws_vpc.prod_vpc.id}"
+}
