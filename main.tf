@@ -44,4 +44,8 @@ module "loadbalancer" {
   lb_access_logs_prefix      = "${var.lb_access_logs_prefix}"
   lb_access_logs_is_enabled  = "${var.lb_access_logs_is_enabled}"
   lb_environment             = "${var.lb_environment}"
+  lb_target_group_name       = "${var.lb_target_group_name}"
+  lb_target_group_port       = "${var.lb_target_group_port}"
+  target_group_vpc_id        = "${module.networking.vpc_id}"
+  num_instances              = "${module.compute.server_ids}"
 }
