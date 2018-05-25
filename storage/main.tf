@@ -8,7 +8,7 @@ resource "random_id" "prod_bucket_id" {
 #---------------------------------------------#
 # S3 bucket #
 #---------------------------------------------#
-data "aws_elb_service_account" "prod-elb-service-account" {}
+data "aws_elb_service_account" "main" {}
 
 resource "aws_s3_bucket" "prod_bucket" {
   acl           = "private"
@@ -25,10 +25,10 @@ resource "aws_s3_bucket" "prod_bucket" {
         "s3:PutObject"
       ],
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::${var.project_name}-${random_id.prod_bucket_id.dec}/AWSLogs/*",
+      "Resource": "arn:aws:s3:::${var.project_name}-${random_id.prod_bucket_id.dec}/*",
       "Principal": {
         "AWS": [
-          "${data.aws_elb_service_account.prod-elb-service-account.arn}"
+          "${data.aws_elb_service_account.main.arn}"
         ]
       }
     }
