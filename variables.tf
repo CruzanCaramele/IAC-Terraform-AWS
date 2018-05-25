@@ -71,3 +71,11 @@ variable "lb_access_logs_is_enabled" {
 variable "lb_environment" {
   description = "working environment"
 }
+
+variable "lb_target_group_name" {
+  description = "target group name for load balancer"
+}
+
+variable "lb_target_group_port" {
+  description = "port for lb target group"
+}
