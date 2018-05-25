@@ -36,3 +36,19 @@ variable "lb_access_logs_is_enabled" {
 variable "lb_environment" {
   description = "working environment"
 }
+
+variable "lb_target_group_name" {
+  description = "name of target group for load balancer"
+}
+
+variable "lb_target_group_port" {
+  description = "port number for load balancer target group"
+}
+
+variable "target_group_vpc_id" {
+  description = "VPC ID"
+}
+
+variable "num_instances" {
+  description = "list of instances to register to target group"
+}
