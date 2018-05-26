@@ -23,8 +23,12 @@ output "Public Security Group" {
 #---------------------------------------------#
 # Compute outputs #
 #---------------------------------------------#
-output "Server IDs" {
-  value = "${module.compute.server_ids}"
+output "Server ID1" {
+  value = "${module.compute.server_id1}"
+}
+
+output "Server ID2" {
+  value = "${module.compute.server_id2}"
 }
 
 output "Server IPs" {
