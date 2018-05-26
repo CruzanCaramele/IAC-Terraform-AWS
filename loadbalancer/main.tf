@@ -20,26 +20,32 @@ resource "aws_lb" "prod-tf-alb" {
   }
 }
 
-resource "aws_lb_target_group" "prod-tf-tg" {
+resource "aws_lb_target_group" "prod-tf-http-tg" {
   name     = "${var.lb_target_group_name}"
   port     = "${var.lb_target_group_port}"
   protocol = "HTTP"
   vpc_id   = "${var.target_group_vpc_id}"
 }
 
-resource "aws_lb_target_group_attachment" "prod-tf-tg-attachment" {
-  target_group_arn = "${aws_lb_target_group.prod-tf-tg.arn}"
-  target_id        = "${var.num_instances}"
+resource "aws_lb_target_group_attachment" "prod-tf-tg-attachment1" {
+  target_group_arn = "${aws_lb_target_group.prod-tf-http-tg.arn}"
+  target_id        = "${var.target_id1}"
   port             = "${var.lb_target_group_port}"
 }
 
-resource "aws_lb_listener" "prod-tf-listener" {
+resource "aws_lb_target_group_attachment" "prod-tf-tg-attachment2" {
+  target_group_arn = "${aws_lb_target_group.prod-tf-http-tg.arn}"
+  target_id        = "${var.target_id2}"
+  port             = "${var.lb_target_group_port}"
+}
+
+resource "aws_lb_listener" "prod-tf-listener1" {
   load_balancer_arn = "${aws_lb.prod-tf-alb.arn}"
   port              = "80"
   protocol          = "HTTP"
 
   default_action {
-    target_group_arn = "${aws_lb_target_group.prod-tf-tg.arn}"
+    target_group_arn = "${aws_lb_target_group.prod-tf-http-tg.arn}"
     type             = "forward"
   }
 }
