@@ -47,5 +47,9 @@ module "loadbalancer" {
   lb_target_group_name       = "${var.lb_target_group_name}"
   lb_target_group_port       = "${var.lb_target_group_port}"
   target_group_vpc_id        = "${module.networking.vpc_id}"
-  num_instances              = "${module.compute.server_ids}"
+  num_instances              = 2
+  target_id1                 = "${module.compute.server_id1}"
+  target_id2                 = "${module.compute.server_id2}"
+
+  # ["${split(",",data.terraform_remote_state.subnets)}"]
 }
