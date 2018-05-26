@@ -52,3 +52,11 @@ variable "target_group_vpc_id" {
 variable "num_instances" {
   description = "list of instances to register to target group"
 }
+
+variable "target_id1" {
+  description = "number of target groups to create"
+}
+
+variable "target_id2" {
+  description = "number of target groups to create"
+}
