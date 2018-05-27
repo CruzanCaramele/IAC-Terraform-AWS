@@ -105,6 +105,18 @@ terraform {
 }
 ```
 
+### Architecture
+![environement](static/architecture.png)
+
+
+
+
+### Future Enhancements:
+
+* [Application Load Balancer](https://www.terraform.io/docs/providers/aws/r/lb.html)
+* [Auto Scaling](https://www.terraform.io/docs/providers/aws/r/autoscaling_group.html)
+* [RDS](https://www.terraform.io/docs/providers/aws/r/db_instance.html)
+* [Route53 - DNS](https://www.terraform.io/docs/providers/aws/r/route53_record.html)
 
 
 
