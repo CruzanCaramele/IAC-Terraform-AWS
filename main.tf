@@ -44,8 +44,6 @@ module "loadbalancer" {
   lb_access_logs_prefix = "${var.lb_access_logs_prefix}"
   lb_target_group_port  = "${var.lb_target_group_port}"
   lb_instances          = "${module.compute.server_ids}"
-
-  # ["${split(",",data.terraform_remote_state.subnets)}"]
 }
 
 # module "loadbalancer" {
