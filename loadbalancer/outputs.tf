@@ -1,5 +1,5 @@
 output "lb_name" {
-  value = "${aws_lb.prod-tf-alb.dns_name}"
+  value = "${aws_elb.prod-tf-elb.dns_name}"
 }
 
 # output "targets" {
