@@ -33,23 +33,40 @@ module "compute" {
 #---------------------------------------------#
 # Load Balancer #
 #---------------------------------------------#
+
 module "loadbalancer" {
-  source                     = "./loadbalancer"
-  lb_name                    = "${var.lb_name}"
-  load_balancer_is_internal  = "${var.load_balancer_is_internal}"
-  lb_sg                      = "${module.networking.prod_lb_sg}"
-  lb_subnets                 = "${module.networking.public_subnets}"
-  enable_deletion_protection = "${var.enable_deletion_protection}"
-  lb_access_logs_bucket      = "${module.storage.bucketname}"
-  lb_access_logs_prefix      = "${var.lb_access_logs_prefix}"
-  lb_access_logs_is_enabled  = "${var.lb_access_logs_is_enabled}"
-  lb_environment             = "${var.lb_environment}"
-  lb_target_group_name       = "${var.lb_target_group_name}"
-  lb_target_group_port       = "${var.lb_target_group_port}"
-  target_group_vpc_id        = "${module.networking.vpc_id}"
-  num_instances              = 2
-  target_id1                 = "${module.compute.server_id1}"
-  target_id2                 = "${module.compute.server_id2}"
+  source                = "./loadbalancer"
+  lb_name               = "${var.lb_name}"
+  avail_zones           = "${module.networking.avail_zones}"
+  elb_subnets           = "${module.networking.subnet_ids}"
+  elb_security_groups   = "${module.networking.security_group_ids}"
+  lb_access_logs_bucket = "${module.storage.bucketname}"
+  lb_access_logs_prefix = "${var.lb_access_logs_prefix}"
+  lb_target_group_port  = "${var.lb_target_group_port}"
+  lb_instances          = "${module.compute.server_ids}"
 
   # ["${split(",",data.terraform_remote_state.subnets)}"]
 }
+
+# module "loadbalancer" {
+#   source                     = "./loadbalancer"
+#   lb_name                    = "${var.lb_name}"
+#   load_balancer_is_internal  = "${var.load_balancer_is_internal}"
+#   lb_sg                      = "${module.networking.prod_lb_sg}"
+#   lb_subnets                 = "${module.networking.public_subnets}"
+#   enable_deletion_protection = "${var.enable_deletion_protection}"
+#   lb_access_logs_bucket      = "${module.storage.bucketname}"
+#   lb_access_logs_prefix      = "${var.lb_access_logs_prefix}"
+#   lb_access_logs_is_enabled  = "${var.lb_access_logs_is_enabled}"
+#   lb_environment             = "${var.lb_environment}"
+#   lb_target_group_name       = "${var.lb_target_group_name}"
+#   lb_target_group_port       = "${var.lb_target_group_port}"
+#   target_group_vpc_id        = "${module.networking.vpc_id}"
+#   num_instances              = 2
+#   target_id1                 = "${module.compute.server_id1}"
+#   target_id2                 = "${module.compute.server_id2}"
+
+
+#   # ["${split(",",data.terraform_remote_state.subnets)}"]
+# }
+
