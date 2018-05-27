@@ -3,7 +3,7 @@
 #---------------------------------------------#
 terraform {
   backend "s3" {
-    bucket = "your-bucket-name"
+    bucket = "terraform-state-zeeman"
     key    = "terraform/terraform.tfstate"
     region = "us-east-1"
   }
