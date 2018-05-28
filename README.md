@@ -3,7 +3,7 @@
 
 [![Help Contribute to Open Source](https://www.codetriage.com/terraform-aws-modules/terraform-aws-vpc/badges/users.svg)](https://www.codetriage.com/terraform-aws-modules/terraform-aws-vpc)
 
-Terraform module which creates VPC resources on AWS.
+An AWS environment that makes use of [Terraform modules](https://www.terraform.io/docs/modules/index.html) to create VPC resources.
 
 The following resources are created:
 
