@@ -55,6 +55,8 @@ module "loadbalancer" {
 }
 ```
 
+Below is a sample terraform.tfvars file that can be used. Replace the values as needed.
+
 ```hcl
 aws_region = "us-east-1"
 
