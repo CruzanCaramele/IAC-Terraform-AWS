@@ -34,3 +34,14 @@ data "template_file" "user-init" {
     firewall_subnets = "${element(var.subnet_ips, count.index)}"
   }
 }
+
+#---------------------------------------------#
+# Launch COnfiguration #
+#---------------------------------------------#
+resource "aws_launch_configuration" "prod-tf-launch-config" {
+  name            = "${var.launch_config_name}"
+  image_id        = "${data.aws_ami.server_ami.id}"
+  instance_type   = "${var.launcg_config_instance_type}"
+  key_name        = "${aws_key_pair.prod_auth.id}"
+  security_groups = ["${var.vpc_security_group}"]
+}
