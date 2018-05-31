@@ -28,3 +28,21 @@ variable "asg_max_size" {
 variable "asg_min_size" {
   description = "asg min size"
 }
+
+variable "desired_capacity" {
+  description = "number of instances that should be running"
+}
+
+variable "load_balancers" {
+  type        = "list"
+  description = "load balancers associated to the asg"
+}
+
+variable "var.health_check_type" {
+  description = "type of health check ELB or EC2"
+}
+
+variable "target_group_arns" {
+  type        = "list"
+  description = "target groups for app load balancer"
+}
