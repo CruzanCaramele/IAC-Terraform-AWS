@@ -12,3 +12,19 @@ variable "launcg_config_instance_type" {
 variable "vpc_security_group" {
   description = "security group of scaling group"
 }
+
+#---------------------------------------------#
+# Auto Scaling Group Variables#
+#---------------------------------------------#
+
+variable "asg_name" {
+  description = "name of auto scaling group"
+}
+
+variable "asg_max_size" {
+  description = "asg max size"
+}
+
+variable "asg_min_size" {
+  description = "asg min size"
+}
