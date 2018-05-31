@@ -52,7 +52,10 @@ resource "aws_launch_configuration" "prod-tf-launch-config" {
 # Auto Scaling Group #
 #---------------------------------------------#
 resource "aws_autoscaling_group" "prod-tf-autoscaling-group" {
-  name     = "${var.asg_name}"
-  max_size = "${var.asg_max_size}"
-  min_size = "${var.asg_min_size}"
+  name              = "${var.asg_name}"
+  max_size          = "${var.asg_max_size}"
+  min_size          = "${var.asg_min_size}"
+  desired_capacity  = "${var.desired_capacity}"
+  load_balancers    = ["${var.load_balancers}"]
+  health_check_type = "${var.health_check_type}"
 }
